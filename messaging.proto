@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service MessageService {
+    rpc PublishMessage (MessageRequest) returns (MessageResponse);
+    rpc Subscribe (SubscribeRequest) returns (stream MessageResponse);
+}
+
+message MessageRequest {
+    string topic = 1;
+    string sender = 2;
+    string message = 3;
+}
+
+message SubscribeRequest {
+    string topic = 1;
+    string subscriber_name = 2;
+}
+
+message MessageResponse {
+    string topic = 1;
+    string sender = 2;
+    string message = 3;
+}
